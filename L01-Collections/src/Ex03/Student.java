@@ -2,7 +2,7 @@ package Ex03;
 
 import java.util.List;
 
-public class Student {
+public class Student implements Comparable<Student>{
     private int studentNo;
     private String name;
     private List<Integer> grades;
@@ -32,5 +32,24 @@ public class Student {
     @Override
     public String toString() {
         return "" + name + " " + grades;
+    }
+
+    @Override
+    public int compareTo(Student o) {
+        return Integer.compare(this.studentNo, o.studentNo);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj instanceof Student other) {
+            return this.studentNo == other.studentNo;
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return studentNo;
     }
 }
