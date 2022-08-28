@@ -7,9 +7,11 @@ import java.util.*;
 public class Ex04 {
     public static void main(String[] args) {
         String path = "L01-Collections/src/Ex04/Gjoengehoevdingen.txt";
-        // 8681 unikkke ord ud af 93428 total antal ord
+        //8731 unikke ord ud af 93555 total antal ord
         //useTreeSet(path);
-        useTreeMap(path);
+        //useTreeMap(path);
+        //useLinkedHashMap(path);
+
     }
 
     public static void useTreeSet(String path){
@@ -20,9 +22,9 @@ public class Ex04 {
         int wordCounter = 0;
         try(Scanner scanner = new Scanner(in)){
             while(scanner.hasNext()){
-                w = scanner.next().toLowerCase().replaceAll("[^a-å’]","");
+                w = scanner.next().toLowerCase().replaceAll("[^a-zåøæ’\\-]","");
+                wordCounter++;
                 if(!w.equals("")){
-                    wordCounter++;
                     boolean found = false;
                     for (Word e : treeSet) {
                         if (e.getWord().equals(w)) {
@@ -41,7 +43,8 @@ public class Ex04 {
         } catch(FileNotFoundException ex){
             System.out.println("Hej jeg er en fejl");
         }
-
+        System.out.println(treeSet);
+        System.out.printf("%d unikke ord ud af %d total antal ord\n", uniqueCounter, wordCounter);
     }
 
     public static void useTreeMap(String path){
@@ -52,11 +55,11 @@ public class Ex04 {
         int wordCounter = 0;
         try(Scanner scanner = new Scanner(in)){
             while(scanner.hasNext()){
-                w = scanner.next().toLowerCase().replaceAll("[^a-å’]","");
+                w = scanner.next().toLowerCase().replaceAll("[^a-zæøå’\\-]","");
+                wordCounter++;
                 if(!w.equals("")){
                     if(treeMap.containsKey(w)){
                         treeMap.replace(w,treeMap.get(w)+1);
-                        wordCounter++;
                     }else{
                         treeMap.put(w,1);
                         uniqueCounter++;
@@ -70,6 +73,41 @@ public class Ex04 {
         for(String key : treeMap.keySet()){
             if(treeMap.get(key) >= 1000){
                 System.out.println(key+": " + treeMap.get(key));
+            }
+        }
+        System.out.printf("%d unikke ord ud af %d total antal ord\n", uniqueCounter, wordCounter);
+    }
+
+    public static void useLinkedHashMap(String path){
+        File in = new File(path);
+        String w;
+        Map<Integer, HashSet<String>> linkedHashMap = new LinkedHashMap<>();
+        int uniqueCounter = 0;
+        int wordCounter = 0;
+        try(Scanner scanner = new Scanner(in)){
+            while(scanner.hasNext()){
+                w = scanner.next().toLowerCase().replaceAll("[^a-zæøå’\\-]","");
+                wordCounter++;
+                if(!w.equals("")){
+                    int wHash = w.hashCode();
+                    if(!linkedHashMap.containsKey(wHash)){
+                        HashSet<String> hashSet = new HashSet<>();
+                        hashSet.add(w);
+                        linkedHashMap.put(wHash, hashSet);
+                        uniqueCounter++;
+                    } else {
+                        linkedHashMap.get(wHash).add(w);
+                    }
+                }
+            }
+        } catch(FileNotFoundException ex){
+            System.out.println("Hej jeg er en fejl");
+        }
+
+        for (Integer key : linkedHashMap.keySet()) {
+            HashSet<String> value = linkedHashMap.get(key);
+            if (value.size() > 1) {
+                System.out.println(key + ": " + value);
             }
         }
         System.out.printf("%d unikke ord ud af %d total antal ord\n", uniqueCounter, wordCounter);
