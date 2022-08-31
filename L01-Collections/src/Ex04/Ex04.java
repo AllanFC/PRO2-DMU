@@ -7,10 +7,10 @@ import java.util.*;
 public class Ex04 {
     public static void main(String[] args) {
         String path = "L01-Collections/src/Ex04/Gjoengehoevdingen.txt";
-        //8731 unikke ord ud af 93555 total antal ord
-        //useTreeSet(path);
-        //useTreeMap(path);
-        //useLinkedHashMap(path);
+        //8730 unikke ord ud af 93555 total antal ord
+//        useTreeSet(path);
+//        useTreeMap(path);
+        useLinkedHashMap(path);
 
     }
 
@@ -24,7 +24,7 @@ public class Ex04 {
             while(scanner.hasNext()){
                 w = scanner.next().toLowerCase().replaceAll("[^a-zåøæ’\\-]","");
                 wordCounter++;
-                if(!w.equals("")){
+                if(!w.equals("") && !w.equals("-")){
                     boolean found = false;
                     for (Word e : treeSet) {
                         if (e.getWord().equals(w)) {
@@ -57,7 +57,7 @@ public class Ex04 {
             while(scanner.hasNext()){
                 w = scanner.next().toLowerCase().replaceAll("[^a-zæøå’\\-]","");
                 wordCounter++;
-                if(!w.equals("")){
+                if(!w.equals("") && !w.equals("-")){
                     if(treeMap.containsKey(w)){
                         treeMap.replace(w,treeMap.get(w)+1);
                     }else{
@@ -88,7 +88,7 @@ public class Ex04 {
             while(scanner.hasNext()){
                 w = scanner.next().toLowerCase().replaceAll("[^a-zæøå’\\-]","");
                 wordCounter++;
-                if(!w.equals("")){
+                if(!w.equals("") && !w.equals("-")){
                     int wHash = w.hashCode();
                     if(!linkedHashMap.containsKey(wHash)){
                         HashSet<String> hashSet = new HashSet<>();
