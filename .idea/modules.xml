@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/L01-Collections/L01-Collections.iml" filepath="$PROJECT_DIR$/L01-Collections/L01-Collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/L02-Lambda/L02-Lambda.iml" filepath="$PROJECT_DIR$/L02-Lambda/L02-Lambda.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L03-Git/L03-Git.iml" filepath="$PROJECT_DIR$/L03-Git/L03-Git.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L04-Test/L04-Test.iml" filepath="$PROJECT_DIR$/L04-Test/L04-Test.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO2.iml" filepath="$PROJECT_DIR$/PRO2.iml" />
     </modules>
   </component>
