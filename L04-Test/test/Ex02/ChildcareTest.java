@@ -15,6 +15,14 @@ class ChildcareTest {
     }
 
     @Test
+    void totalPayment0(){
+        //Act
+        int actual = childcare.totalPayment(0,0);
+        //Assert
+        assertEquals(0, actual);
+    }
+
+    @Test
     void totalPayment1small() {
         //Act
         int actual = childcare.totalPayment(1,0);
