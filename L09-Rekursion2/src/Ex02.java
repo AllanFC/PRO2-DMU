@@ -8,7 +8,7 @@ public class Ex02 {
         return isPalindrome(s, 0);
     }
     public static boolean isPalindrome(String s, int n){
-        if(s.length() == 1 || n >= s.length() - 1){
+        if(s.length() == 1 || n == s.length() - n - 1){
             return true;
         }
         if(s.charAt(n) == s.charAt(s.length()-n-1)){

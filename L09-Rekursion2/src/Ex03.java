@@ -1,15 +1,19 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Ex03 {
     public static void main(String[] args) {
-        System.out.println(CalcNo(3));
-        System.out.println(CalcNo(4));
-        System.out.println(CalcNo(5));
-        System.out.println(CalcNo(6));
+        System.out.println(calcNo(45));
+
+        System.out.println();
+        System.out.println(calcNoIt(45));
+
 
     }
 
 
     //Requires: n >= 0
-    public static int CalcNo(int n){
+    public static int calcNo(int n){
         if(n == 0){
             return 2;
         } else if (n == 1) {
@@ -17,16 +21,24 @@ public class Ex03 {
         } else if (n == 2){
             return 5;
         }
-        return n % 2 == 0 ? 2*CalcNo(n-3) - CalcNo(n-1) : CalcNo(n-1) + CalcNo(n-2) + 3*CalcNo(n-3);
+        return n % 2 == 0 ? 2*calcNo(n-3) - calcNo(n-1) : calcNo(n-1) + calcNo(n-2) + 3*calcNo(n-3);
     }
 
     public static int calcNoIt(int n){
-        int result = 0;
-        while(n > 2){
-            if(n % 2 == 0){
-
+        ArrayList<Integer> list = new ArrayList<>(List.of(2, 1, 5));
+        int i = 3;
+        int calc;
+        while(i <= n){
+            if(i % 2 == 0){
+                calc = 2 * list.get(i-3)-list.get(i-1);
+                list.add(calc);
+            } else {
+                calc = list.get(i-1) + list.get(i-2) + 3 * list.get(i-3);
+                list.add(calc);
             }
+            i++;
         }
-        return 0;
+
+        return list.get(n);
     }
 }
