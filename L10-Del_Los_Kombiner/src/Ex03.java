@@ -4,7 +4,12 @@ import java.util.List;
 public class Ex03 {
     public static void main(String[] args) {
         ArrayList<Integer> list = new ArrayList<>(List.of(8, 56, 45, 34, 15, 12, 34, 44));
-        mergesort(list,0,list.size()-1);
+        mergesort(list);
+        System.out.println(list);
+    }
+
+    public static void mergesort(ArrayList<Integer> list) {
+        mergesort(list, 0, list.size() - 1);
     }
 
     private static void mergesort(ArrayList<Integer> list, int l, int h) {
@@ -18,10 +23,29 @@ public class Ex03 {
 
     private static void merge(ArrayList<Integer> list, int low, int middle, int high) {
         ArrayList<Integer> temp = new ArrayList<>();
+        int i = low;
+        int j = middle+1;
+        while(i <= middle && j <= high){
+            if(list.get(i) <= list.get(j)){
+                temp.add(list.get(i));
+                i++;
+            } else{
+                temp.add(list.get(j));
+                j++;
+            }
+        }
 
-        System.out.println(temp);
-        // <flet list[low..middle] og list[middle+1..high] over i
-        // en ny liste (temp) ved en total fletning>
-        // <list[low..high] = temp>
+        while(i <= middle){
+            temp.add(list.get(i));
+            i++;
+        }
+        while(j <= high){
+            temp.add(list.get(j));
+            j++;
+        }
+
+        for (int k = 0; k < temp.size(); low++) {
+            list.set(low, temp.get(k++));
+        }
     }
 }
