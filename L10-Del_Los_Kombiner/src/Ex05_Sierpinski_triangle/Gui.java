@@ -3,18 +3,13 @@ package Ex05_Sierpinski_triangle;
 import javafx.application.Application;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Polygon;
 import javafx.stage.Stage;
 import javafx.scene.paint.Color;
-
-import java.awt.*;
 
 public class Gui extends Application {
 
@@ -53,7 +48,7 @@ public class Gui extends Application {
         drawPane.setPrefSize(drawPaneWidth, drawPaneHeight);
         drawPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         pane.add(drawPane, 0,0,1,2);
-        this.draw(drawPane, 20,drawPaneHeight - 20, drawPaneWidth-40, 0, 0);
+        this.sierpinskiTriangle(drawPane, 20,drawPaneHeight - 20, drawPaneWidth-40, 0, 0);
 
         Button btnDecrease = new Button("<--");
         btnDecrease.setPrefWidth(50);
@@ -77,14 +72,14 @@ public class Gui extends Application {
     }
 
     // -------------------------------------------------------------------------
-    private void draw(Pane pane, double x, double y, double l, double depth, int order){
+    private void sierpinskiTriangle(Pane pane, double x, double y, double l, double depth, int order){
         if(depth == order){
             triangle(pane, x, y, l);
         } else {
             triangle(pane, x, y, l);
-            draw(pane, x, y, l/2, depth + 1, order);
-            draw(pane, x + l/4, y - Math.sin(Math.PI/3) * l/2, l/2, depth + 1, order);
-            draw(pane, x + l/2, y, l/2, depth + 1, order);
+            sierpinskiTriangle(pane, x, y, l/2, depth + 1, order);
+            sierpinskiTriangle(pane, x + l/4, y - Math.sin(Math.PI/3) * l/2, l/2, depth + 1, order);
+            sierpinskiTriangle(pane, x + l/2, y, l/2, depth + 1, order);
         }
     }
 
@@ -93,7 +88,7 @@ public class Gui extends Application {
         if(order != 0){
             pane.getChildren().clear();
             order--;
-            draw(pane, startX, startY, length, 0, order);
+            sierpinskiTriangle(pane, startX, startY, length, 0, order);
             lblorder.setText("Order: " + order);
         }
     }
@@ -102,7 +97,7 @@ public class Gui extends Application {
         int order = Integer.parseInt(lblorder.getText().split(" ")[1]);
         order++;
         pane.getChildren().clear();
-        draw(pane, startX, startY, length, 0, order);
+        sierpinskiTriangle(pane, startX, startY, length, 0, order);
         lblorder.setText("Order: " + order);
     }
 
