@@ -48,7 +48,7 @@ public class Gui extends Application {
         drawPane.setPrefSize(drawPaneWidth, drawPaneHeight);
         drawPane.setBackground(new Background(new BackgroundFill(Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY)));
         pane.add(drawPane, 0,0,1,2);
-        this.sierpinskiTriangle(drawPane, 20,drawPaneHeight - 20, drawPaneWidth-40, 0, 0);
+        this.sierpinskiTriangle(drawPane, 20,drawPaneHeight - 20, drawPaneWidth-40, 0);
 
         Button btnDecrease = new Button("<--");
         btnDecrease.setPrefWidth(50);
@@ -72,14 +72,14 @@ public class Gui extends Application {
     }
 
     // -------------------------------------------------------------------------
-    private void sierpinskiTriangle(Pane pane, double x, double y, double l, double depth, int order){
-        if(depth == order){
+    private void sierpinskiTriangle(Pane pane, double x, double y, double l, int order){
+        if(order == 0){
             triangle(pane, x, y, l);
         } else {
             triangle(pane, x, y, l);
-            sierpinskiTriangle(pane, x, y, l/2, depth + 1, order);
-            sierpinskiTriangle(pane, x + l/4, y - Math.sin(Math.PI/3) * l/2, l/2, depth + 1, order);
-            sierpinskiTriangle(pane, x + l/2, y, l/2, depth + 1, order);
+            sierpinskiTriangle(pane, x, y, l/2, order -1);
+            sierpinskiTriangle(pane, x + l/4, y - Math.sin(Math.PI/3) * l/2, l/2, order -1);
+            sierpinskiTriangle(pane, x + l/2, y, l/2, order - 1);
         }
     }
 
@@ -88,7 +88,7 @@ public class Gui extends Application {
         if(order != 0){
             pane.getChildren().clear();
             order--;
-            sierpinskiTriangle(pane, startX, startY, length, 0, order);
+            sierpinskiTriangle(pane, startX, startY, length, order);
             lblorder.setText("Order: " + order);
         }
     }
@@ -97,7 +97,7 @@ public class Gui extends Application {
         int order = Integer.parseInt(lblorder.getText().split(" ")[1]);
         order++;
         pane.getChildren().clear();
-        sierpinskiTriangle(pane, startX, startY, length, 0, order);
+        sierpinskiTriangle(pane, startX, startY, length, order);
         lblorder.setText("Order: " + order);
     }
 
