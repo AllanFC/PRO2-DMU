@@ -38,7 +38,7 @@ public class Main {
 
     public static <E> HashSet<E> intersect(HashSet<E> set1, HashSet<E> set2){
         HashSet<E> intersect = new HashSet<>(set1);
-        intersect.retainAll(set2)
+        intersect.retainAll(set2);
         return intersect;
     }
 
