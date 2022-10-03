@@ -7,8 +7,35 @@ public class EmailEvaluator implements Evaluator {
     /** Returns true, if s contains a valid email address. */
     @Override
     public boolean isValid(String s) {
-        String[] strings = s.split("^(.+)\\.(.+)@$");
-        System.out.println(Arrays.toString(strings));
+        if(s.contains("@")){
+            String[] email = s.split("@",-1);
+            if(email.length < 2){
+                return false;
+            }
+            String[] left = email[0].split("\\.",-1);
+            String[] right = email[1].split("\\.",-1);
+            System.out.println(Arrays.toString(left));
+            System.out.println(Arrays.toString(right));
+            boolean word = true;
+            int i = 0;
+            while(word){
+                if(i < left.length){
+                    if(!isWord(left[i])){
+                        word = false;
+                    }
+                }
+                if(i < right.length){
+                    if(!isWord(right[i])){
+                        word = false;
+                    }
+                }
+                if(i > left.length && i > right.length){
+                    return true;
+                }
+                i++;
+            }
+            return false;
+        }
         return false;
     }
 
