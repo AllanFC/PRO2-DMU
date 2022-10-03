@@ -1,4 +1,4 @@
-package Ex02;
+package Ex02_Strategy;
 
 import java.util.Comparator;
 

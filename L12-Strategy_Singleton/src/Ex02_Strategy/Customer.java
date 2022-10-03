@@ -1,8 +1,8 @@
-package Ex02;
+package Ex02_Strategy;
 
 import java.util.Comparator;
 
-public class Customer {
+public class Customer implements Comparable<Customer>{
     private int number;
     private String name;
     private static Comparator<Customer> comp;
@@ -31,5 +31,10 @@ public class Customer {
     @Override
     public String toString() {
         return "" + name + " " + number;
+    }
+
+    @Override
+    public int compareTo(Customer o) {
+        return comp.compare(this,o);
     }
 }

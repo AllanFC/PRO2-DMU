@@ -1,4 +1,4 @@
-package Ex03;
+package Ex03_Strategy;
 
 
 import java.util.Arrays;
@@ -14,8 +14,6 @@ public class EmailEvaluator implements Evaluator {
             }
             String[] left = email[0].split("\\.",-1);
             String[] right = email[1].split("\\.",-1);
-            System.out.println(Arrays.toString(left));
-            System.out.println(Arrays.toString(right));
             boolean word = true;
             int i = 0;
             while(word){

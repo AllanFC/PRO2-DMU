@@ -1,4 +1,4 @@
-package Ex03;
+package Ex03_Strategy;
 
 public class FieldEvaluator {
     private Evaluator evaluator;

@@ -1,4 +1,4 @@
-package Ex02;
+package Ex02_Strategy;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -11,17 +11,18 @@ public class main {
         Customer c2 = new Customer(2,"Anders");
         Customer c3 = new Customer(3, "Jerry");
         ArrayList<Customer> list = new ArrayList<>(List.of(c1, c3, c2));
-
-        System.out.println(list);
-        Collections.sort(list, new CompName());
-        System.out.println(list);
-        Collections.sort(list, new CompNumb());
         System.out.println(list);
 
+        Customer.setComp(new CompName());
+        Collections.sort(list);
+        System.out.println(list);
 
-        String s = "allan.allan@allan.dk";
-        String[] strings = s.split("\\.");
-        System.out.println(Arrays.toString(strings));
+        Customer.setComp(new CompNumb());
+        Collections.sort(list);
+        System.out.println(list);
+
+
+
     }
 
 }

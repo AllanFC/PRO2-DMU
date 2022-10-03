@@ -1,4 +1,4 @@
-package Ex03;
+package Ex03_Strategy;
 
 public class NumberEvaluator implements Evaluator {
     /** Returns true, if s contains a valid integer or decimal number. */
