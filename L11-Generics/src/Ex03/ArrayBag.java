@@ -1,6 +1,7 @@
 package Ex03;
 
 import java.util.Arrays;
+import java.util.Random;
 
 public class ArrayBag<E> implements Bag<E> {
     // the array to hold the items
@@ -50,7 +51,10 @@ public class ArrayBag<E> implements Bag<E> {
     @Override
     public E remove() {
         if(!isEmpty()){
-            E item = items[size-1];
+            Random rd = new Random();
+            int randint = rd.nextInt(size);
+            E item = items[randint];
+            items[randint] = items[size-1];
             items[size-1] = null;
             size--;
             return item;
@@ -60,10 +64,11 @@ public class ArrayBag<E> implements Bag<E> {
 
     @Override
     public boolean remove(E anEntry) {
-        for (int i = 0; i < items.length; i++) {
+        for (int i = 0; i < size; i++) {
             E k = items[i];
-            if(k != null && k.equals(anEntry)){
-                items[i] = null;
+            if(k.equals(anEntry)){
+                items[i] = items[size-1];
+                items[size-1] = null;
                 size--;
                 return true;
             }
@@ -80,8 +85,8 @@ public class ArrayBag<E> implements Bag<E> {
     @Override
     public int getFrequencyOf(E anEntry) {
         int count = 0;
-        for (E entry : items) {
-            if(entry != null && entry.equals(anEntry)){
+        for (int i = 0; i < size; i++) {
+            if(items[i].equals(anEntry)){
                 count++;
             }
         }
@@ -92,7 +97,7 @@ public class ArrayBag<E> implements Bag<E> {
     public boolean contains(E anEntry) {
         int i = 0;
         boolean found = false;
-        while(i < items.length && !found){
+        while(i < size && !found){
             E k = items[i];
             if(k != null && k.equals(anEntry)){
                 found = true;
@@ -104,7 +109,9 @@ public class ArrayBag<E> implements Bag<E> {
 
     @Override
     public E[] toArray() {
-        E[] newarr = items;
-        return newarr;
+        @SuppressWarnings("unchecked")
+        E[] newArr = (E[]) new Object[size];
+        System.arraycopy(items, 0, newArr, 0, size);
+        return newArr;
     }
 }

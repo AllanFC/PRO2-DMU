@@ -37,12 +37,8 @@ public class Main {
     }
 
     public static <E> HashSet<E> intersect(HashSet<E> set1, HashSet<E> set2){
-        HashSet<E> intersect = new HashSet<>();
-        for (E e : set1) {
-            if(set2.contains(e)){
-                intersect.add(e);
-            }
-        }
+        HashSet<E> intersect = new HashSet<>(set1);
+        intersect.retainAll(set2);
         return intersect;
     }
 
@@ -50,11 +46,6 @@ public class Main {
         HashSet<E> difference = new HashSet<>();
         for (E e : set1) {
             if(!set2.contains(e)){
-                difference.add(e);
-            }
-        }
-        for (E e : set2) {
-            if(!set1.contains(e)){
                 difference.add(e);
             }
         }
