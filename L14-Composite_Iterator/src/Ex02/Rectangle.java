@@ -2,28 +2,15 @@ package Ex02;
 
 public class Rectangle extends FigureComponent{
 
-    private String name;
-    private String type;
     private int length;
     private int height;
 
-    public Rectangle(String name, String type, int length, int height) {
-        super();
-        this.name = name;
-        this.type = type;
+    public Rectangle(String name, int length, int height) {
+        super(name);
         this.length = length;
         this.height = height;
     }
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getType() {
-        return type;
-    }
 
     public int getLength() {
         return length;
@@ -35,7 +22,7 @@ public class Rectangle extends FigureComponent{
 
     @Override
     public void draw() {
-        System.out.printf("Name: %s Type: %s\n", name, type);
+        System.out.printf("Name: %s Circ: %.2f\n", getName(), calcCirc());
     }
 
     @Override

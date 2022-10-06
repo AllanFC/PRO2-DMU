@@ -4,25 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FigureComposed extends FigureComponent{
-
     ArrayList<FigureComponent> components = new ArrayList<>();
-    private String groupName;
-    private String groupType;
 
-    public FigureComposed(String groupName, String groupType) {
-        super();
-        this.groupName = groupName;
-        this.groupType = groupType;
-    }
-
-    @Override
-    public String getName() {
-        return groupName;
-    }
-
-    @Override
-    public String getType() {
-        return groupType;
+    public FigureComposed(String name) {
+        super(name);
     }
 
     @Override
@@ -37,8 +22,12 @@ public class FigureComposed extends FigureComponent{
 
     @Override
     public void draw() {
+        System.out.println(getName() + ":");
+        double sum = 0;
         for(FigureComponent fc : components){
             fc.draw();
+            sum += fc.calcCirc();
         }
+        System.out.println("Total group circumference: " + sum);
     }
 }

@@ -2,19 +2,17 @@ package Ex02;
 
 public abstract class FigureComponent {
 
+    private String name;
+
+    public FigureComponent(String name) {
+        this.name = name;
+    }
 
     public String getName() {
-       throw new UnsupportedOperationException();
+       return name;
     }
 
     public void setName(String name) {
-        throw new UnsupportedOperationException();
-    }
-    public String getType() {
-        throw new UnsupportedOperationException();
-    }
-
-    public void setType(String type) {
         throw new UnsupportedOperationException();
     }
     public void add(FigureComponent component){
