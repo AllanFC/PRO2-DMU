@@ -15,6 +15,9 @@
       <module fileurl="file://$PROJECT_DIR$/L12-Strategy_Singleton/L12-Strategy_Singleton.iml" filepath="$PROJECT_DIR$/L12-Strategy_Singleton/L12-Strategy_Singleton.iml" />
       <module fileurl="file://$PROJECT_DIR$/L13-Observer_Adapter/L13-Observer_Adapter.iml" filepath="$PROJECT_DIR$/L13-Observer_Adapter/L13-Observer_Adapter.iml" />
       <module fileurl="file://$PROJECT_DIR$/L14-Composite_Iterator/L14-Composite_Iterator.iml" filepath="$PROJECT_DIR$/L14-Composite_Iterator/L14-Composite_Iterator.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L15-Architecture_Serializable/L15-Architecture_Serializable.iml" filepath="$PROJECT_DIR$/L15-Architecture_Serializable/L15-Architecture_Serializable.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L16_21-EksamensProjekt/L16_21-EksamensProjekt.iml" filepath="$PROJECT_DIR$/L16_21-EksamensProjekt/L16_21-EksamensProjekt.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" filepath="$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO2.iml" filepath="$PROJECT_DIR$/PRO2.iml" />
     </modules>
   </component>
