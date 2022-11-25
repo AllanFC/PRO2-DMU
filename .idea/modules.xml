@@ -18,6 +18,7 @@
       <module fileurl="file://$PROJECT_DIR$/L15-Architecture_Serializable/L15-Architecture_Serializable.iml" filepath="$PROJECT_DIR$/L15-Architecture_Serializable/L15-Architecture_Serializable.iml" />
       <module fileurl="file://$PROJECT_DIR$/L16_21-EksamensProjekt/L16_21-EksamensProjekt.iml" filepath="$PROJECT_DIR$/L16_21-EksamensProjekt/L16_21-EksamensProjekt.iml" />
       <module fileurl="file://$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" filepath="$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L23-Stack/L23-Stack.iml" filepath="$PROJECT_DIR$/L23-Stack/L23-Stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO2.iml" filepath="$PROJECT_DIR$/PRO2.iml" />
     </modules>
   </component>
