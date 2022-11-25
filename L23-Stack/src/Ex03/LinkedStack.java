@@ -1,4 +1,6 @@
-package Ex01;
+package Ex03;
+
+import Ex02.StackI;
 
 import java.util.NoSuchElementException;
 
