@@ -32,4 +32,6 @@ public interface StackI<E> {
      * Return the number of elements in the stack.
      */
     int size();
+
+    void print();
 }

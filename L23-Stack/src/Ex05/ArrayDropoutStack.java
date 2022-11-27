@@ -8,14 +8,12 @@ public class ArrayDropoutStack<E> implements StackI<E> {
     private int top;
     // contains the entries in the stack
     private E[] entries;
-
-    public ArrayDropoutStack() {
-        this(10);
-    }
+    private int capacity;
 
     public ArrayDropoutStack(int capacity) {
         @SuppressWarnings("unchecked")
         E[] temp = (E[]) new Object[capacity];
+        this.capacity = capacity;
         entries = temp;
         top = -1;
     }
@@ -25,7 +23,7 @@ public class ArrayDropoutStack<E> implements StackI<E> {
      */
     @Override
     public void push(E entry) {
-        if (top == entries.length - 1) {
+        if (top == capacity-1) {
             this.dropOut();
         }
         entries[top+1] = entry;
@@ -92,5 +90,10 @@ public class ArrayDropoutStack<E> implements StackI<E> {
     public int size() {
         return top+1;
     }
-
+    @Override
+    public void print(){
+        for(int i = top; i >= 0; i--){
+            System.out.println(entries[i]);
+        }
+    }
 }

@@ -2,15 +2,18 @@ package Ex05;
 
 import java.util.NoSuchElementException;
 
-public class LinkedStack<E> implements StackI<E> {
+public class LinkedDropoutStack<E> implements StackI<E> {
     // top of stack is at head of list (i.e.at first)
     private Node first;
     // the number of element in the stack
     int size;
+    // dropout capacity
+    int capacity;
 
-    public LinkedStack() {
+    public LinkedDropoutStack(int capacity) {
         first = null;
         size = 0;
+        this.capacity = capacity;
     }
 
     /**
@@ -18,12 +21,23 @@ public class LinkedStack<E> implements StackI<E> {
      */
     @Override
     public void push(E entry) {
+        if(size == capacity){
+            dropout();
+        }
         Node newNode = new Node(entry);
         if(first != null){
             newNode.next = first;
         }
         first = newNode;
         size++;
+    }
+
+    public void dropout(){
+        Node node = first;
+        while(node.next.next != null){
+            node = node.next;
+        }
+        node.next = null;
     }
 
     /**
@@ -76,6 +90,15 @@ public class LinkedStack<E> implements StackI<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    @Override
+    public void print(){
+        Node node = first;
+        while(node.next != null){
+            System.out.println(node.entry);
+            node = node.next;
+        }
     }
 
     //-------------------------------------------------------------------------
