@@ -1,14 +1,15 @@
-package Ex01b;
+package Ex03;
+
 
 
 import java.util.NoSuchElementException;
 
-public class DoubleLinkedQueue<E> implements QueueI<E>{
+public class DoubleLinkedDeque<E> implements DequeI<E> {
     private Node header;
     private Node trailer;
     private int size;
 
-    public DoubleLinkedQueue() {
+    public DoubleLinkedDeque() {
         header = new Node(null);
         trailer = new Node(null);
         header.next = trailer;
@@ -17,7 +18,17 @@ public class DoubleLinkedQueue<E> implements QueueI<E>{
     }
 
     @Override
-    public void add(E entry) {
+    public void addFirst(E entry) {
+        Node newNode = new Node(entry);
+        newNode.next = header.next;
+        newNode.prev = header;
+        header.next.prev = newNode;
+        header.next = newNode;
+        size++;
+    }
+
+    @Override
+    public void addLast(E entry) {
         Node newNode = new Node(entry);
         newNode.next = trailer;
         newNode.prev = trailer.prev;
@@ -27,7 +38,7 @@ public class DoubleLinkedQueue<E> implements QueueI<E>{
     }
 
     @Override
-    public E remove() {
+    public E removeFirst() {
         if(header.next == trailer){
             throw new NoSuchElementException();
         }
@@ -39,7 +50,19 @@ public class DoubleLinkedQueue<E> implements QueueI<E>{
     }
 
     @Override
-    public E element() {
+    public E removeLast() {
+        if(header.next == trailer){
+            throw new NoSuchElementException();
+        }
+        E popped = trailer.prev.entry;
+        trailer.prev = trailer.prev.prev;
+        trailer.prev.next = trailer;
+        size--;
+        return popped;
+    }
+
+    @Override
+    public E getFirst() {
         if(header.next == trailer){
             throw new NoSuchElementException();
         }
@@ -47,8 +70,16 @@ public class DoubleLinkedQueue<E> implements QueueI<E>{
     }
 
     @Override
+    public E getLast() {
+        if(header.next == trailer){
+            throw new NoSuchElementException();
+        }
+        return trailer.prev.entry;
+    }
+
+    @Override
     public boolean isEmpty() {
-        return size == 0;
+        return header.next == trailer;
     }
 
     @Override
