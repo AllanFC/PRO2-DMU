@@ -20,6 +20,8 @@
       <module fileurl="file://$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" filepath="$PROJECT_DIR$/L22-LinkedList/L22-LinkedList.iml" />
       <module fileurl="file://$PROJECT_DIR$/L23-Stack/L23-Stack.iml" filepath="$PROJECT_DIR$/L23-Stack/L23-Stack.iml" />
       <module fileurl="file://$PROJECT_DIR$/L24-Queue_Deque/L24-Queue_Deque.iml" filepath="$PROJECT_DIR$/L24-Queue_Deque/L24-Queue_Deque.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L25-Hashing/L25-Hashing.iml" filepath="$PROJECT_DIR$/L25-Hashing/L25-Hashing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/L26-Map/L26-Map.iml" filepath="$PROJECT_DIR$/L26-Map/L26-Map.iml" />
       <module fileurl="file://$PROJECT_DIR$/PRO2.iml" filepath="$PROJECT_DIR$/PRO2.iml" />
     </modules>
   </component>
