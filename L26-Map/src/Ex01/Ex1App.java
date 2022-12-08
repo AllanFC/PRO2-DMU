@@ -1,13 +1,15 @@
 package Ex01;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Ex1App {
 	public static void main(String[] args) {
 		Map<String, Customer> map = new HashMap<String, Customer>();
-//        Map<String, Customer> map = new LinkedHashMap<String, Customer>();
-//        Map<String, Customer> map = new TreeMap<String, Customer>();
+        //Map<String, Customer> map = new LinkedHashMap<String, Customer>();
+        //Map<String, Customer> map = new TreeMap<String, Customer>();
 
 		map.put("11111111", new Customer("11111111", "12121212", "Bob", "Kennedy"));
 		map.put("22222222", new Customer("22222222", "23232323", "Alice", "Gordon"));
@@ -15,6 +17,24 @@ public class Ex1App {
 		map.put("44444444", new Customer("44444444", "45454545", "John", "Farmer"));
 		map.put("88888888", new Customer("88888888", "89898989", "George", "Smith"));
 
-		// TODO
+		System.out.println("Print all keys: ");
+		for(String s : map.keySet()){
+			System.out.println(s);
+		}
+
+		System.out.println("\nPrint all values");
+		for(Customer e : map.values()){
+			System.out.println(e);
+		}
+
+		System.out.println("\nPrint all sets of entries");
+		for(Map.Entry<String, Customer> e : map.entrySet()){
+			System.out.println(e);
+		}
+
+		System.out.println("\nPrint all pairs");
+		for(String s : map.keySet()){
+			System.out.println(s + ", " + map.get(s));
+		}
 	}
 }

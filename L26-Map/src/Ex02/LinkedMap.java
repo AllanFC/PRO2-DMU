@@ -27,9 +27,14 @@ public class LinkedMap<K, V> implements MapI<K, V> {
 	 */
 	@Override
 	public V get(K key) {
-		// TODO
-
-		return null;
+		Node<K,V> node = head;
+		while(node != null && node.key != key){
+			node = node.next;
+		}
+		if(node == null){
+			return null;
+		}
+		return node.value;
 	}
 
 	/**
@@ -40,14 +45,42 @@ public class LinkedMap<K, V> implements MapI<K, V> {
 	@Override
 	public V put(K key, V value) {
 		// guard for empty map
-		// TODO
+		if(size == 0){
+			Node<K, V> newNode = new Node<>(key,value);
+			head = newNode;
+			size++;
+			return null;
+		}
 
 		// guard for key found in first node
-		// TODO
+		if(head.key == key){
+			V oldValue = head.value;
+			Node<K, V> newNode = new Node<>(key, value);
+			newNode.next = head;
+			head = newNode;
+			size++;
+			return oldValue;
+		}
 
-		// TODO
+		Node<K,V> node = head;
+		while(node.next != null && node.next.key != key){
+			node = node.next;
+		}
 
-		return null;
+		if(node.next == null){
+			Node<K, V> newNode = new Node<>(key, value);
+			newNode.next = head;
+			head = newNode;
+			size++;
+			return null;
+		}
+
+		V oldValue = node.next.value;
+		Node<K, V> newNode = new Node<>(key, value);
+		newNode.next = node.next.next;
+		node.next = newNode;
+		size++;
+		return oldValue;
 	}
 
 	/**
@@ -58,36 +91,69 @@ public class LinkedMap<K, V> implements MapI<K, V> {
 	@Override
 	public V remove(K key) {
 		// guard for empty map
-		// TODO
+		if(size == 0){
+			return null;
+		}
 
 		// guard for key found in first node
-		// TODO
+		if(head.key == key){
+			V poppedValue = head.value;
+			head = head.next;
+			size--;
+			return poppedValue;
+		}
 
-		// TODO
+		Node<K,V> node = head;
+		while(node.next != null && node.next.key != key){
+			node = node.next;
+		}
 
-		return null;
+		if(node.next == null){
+			return null;
+		}
+
+		V poppedValue = node.next.value;
+		node.next = node.next.next;
+		size--;
+		return poppedValue;
 	}
 
 	/**
 	 * Return a set with all the keys in the map.
+	 * Returns null if empty
 	 */
 	@Override
 	public Set<K> keys() {
-		Set<K> keys = new LinkedHashSet<K>();
+		if(size == 0){
+			return null;
+		}
 
-		// TODO
+		Set<K> keys = new LinkedHashSet<>();
+		Node<K,V> node = head;
+		while(node != null){
+			keys.add(node.key);
+			node = node.next;
+		}
 
 		return keys;
 	}
 
 	/**
 	 * Return a list with all the values in the map.
+	 * Returns null if empty
 	 */
 	@Override
 	public List<V> values() {
-		List<V> values = new LinkedList<V>();
+		if(size == 0){
+			return null;
+		}
 
-		// TODO
+		List<V> values = new LinkedList<>();
+		Node<K,V> node = head;
+		while(node != null){
+			values.add(node.value);
+			node = node.next;
+		}
 
 		return values;
 	}
