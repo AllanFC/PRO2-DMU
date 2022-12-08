@@ -34,7 +34,18 @@ public class HashSetSC<E> {
      * Return true, if element is in the set.
      */
     public boolean contains(E element) {
-        // TODO
+        if(size == 0){
+            return false;
+        }
+
+        int hash = element.hashCode();
+        Node<E> node = table[hash];
+        while(node != null){
+            if(node.data == element){
+                return true;
+            }
+            node = node.next;
+        }
         return false;
     }
 
@@ -44,8 +55,31 @@ public class HashSetSC<E> {
      * Throw IllegalArgumentException, if element is null.
      */
     public boolean add(E element) {
-        // TODO
-        return false;
+        if(element == null){
+            throw new IllegalArgumentException();
+        }
+
+        int hash = this.hash(element);
+        if(table[hash] == null){
+            Node<E> newNode = new Node<>(element);
+            table[hash] = newNode;
+            size++;
+            return true;
+        }
+
+        Node<E> node = table[hash];
+        while(node != null){
+            if(node.data == element){
+                return false;
+            }
+            node = node.next;
+        }
+
+        Node<E> newNode = new Node<>(element);
+        newNode.next = table[hash];
+        table[hash] = newNode;
+        size++;
+        return true;
     }
 
     /**
@@ -53,8 +87,27 @@ public class HashSetSC<E> {
      * Return true, if the element is removed from the set.
      */
     public boolean remove(E element) {
-        // TODO
-        return false;
+        int hash = this.hash(element);
+        if(table[hash] == null){
+            return false;
+        }
+
+        if(table[hash].data == element){
+            table[hash] = table[hash].next;
+            size--;
+            return true;
+        }
+
+        Node<E> node = table[hash];
+        while(node.next != null && node.next.data != element){
+            node = node.next;
+        }
+        if(node.next == null){
+            return false;
+        }
+        node.next = node.next.next;
+        size--;
+        return true;
     }
 
     /**
@@ -66,8 +119,24 @@ public class HashSetSC<E> {
 
     @Override
     public String toString() {
-        // TODO
-        return null;
+        if(size == 0){
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder("[");
+        int i = 0;
+        while(i < table.length){
+            if(table[i] != null){
+                Node<E> node = table[i];
+                while(node != null){
+                    sb.append(", ").append(node.data);
+                    node = node.next;
+                }
+            }
+            i++;
+        }
+        sb.delete(1,3);
+        sb.append("]");
+        return sb.toString();
     }
 
     //-------------------------------------------------------------------------
