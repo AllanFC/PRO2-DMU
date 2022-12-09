@@ -75,6 +75,17 @@ public class IntBinaryTree {
         return rightSubTree;
     }
 
+    public int getSum(){
+        return getSumHelper(root);
+    }
+
+    private int getSumHelper(Node root){
+        if(root == null){
+            return 0;
+        }
+        return (root.data + getSumHelper(root.left) + getSumHelper(root.right));
+    }
+
     //-------------------------------------------------------------------------
 
     private class Node {

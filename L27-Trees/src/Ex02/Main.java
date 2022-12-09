@@ -31,5 +31,7 @@ public class Main {
         t45.printPostorder();
         System.out.println();
         t45.printLevelOrder();
+        System.out.println();
+        System.out.println(t45.listInorder());
     }
 }

@@ -1,8 +1,6 @@
 package Ex02;
 
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * BinaryTree models a binary tree.
@@ -145,6 +143,20 @@ public class BinaryTree<E> {
             printInorderHelper(root.left);
             System.out.print(root.data + " ");
             printInorderHelper(root.right);
+        }
+    }
+
+    public List<E> listInorder(){
+        List<E> list = new ArrayList<>();
+        listInorderHelper(root, list);
+        return list;
+    }
+
+    private void listInorderHelper(Node root, List<E> list){
+        if(root != null){
+            listInorderHelper(root.left, list);
+            list.add(root.data);
+            listInorderHelper(root.right, list);
         }
     }
 
