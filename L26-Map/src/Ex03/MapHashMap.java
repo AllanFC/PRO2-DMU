@@ -46,8 +46,8 @@ public class MapHashMap<K, V> implements MapI<K, V> {
      */
     @Override
     public V get(K key) {
-        // TODO
-        return null;
+        int hash = hash(key);
+        return table[hash].get(key);
     }
 
     /**
@@ -57,8 +57,10 @@ public class MapHashMap<K, V> implements MapI<K, V> {
      */
     @Override
     public V put(K key, V value) {
-        // TODO
-        return null;
+        int hash = hash(key);
+        V oldValue = table[hash].get(key); // null if not present (faster than using contains)
+        table[hash].put(key,value);
+        return oldValue;
     }
 
     /**
@@ -68,8 +70,8 @@ public class MapHashMap<K, V> implements MapI<K, V> {
      */
     @Override
     public V remove(K key) {
-        // TODO
-        return null;
+        int hash = hash(key);
+        return table[hash].remove(key);
     }
 
     /**
@@ -78,9 +80,9 @@ public class MapHashMap<K, V> implements MapI<K, V> {
     @Override
     public Set<K> keys() {
         Set<K> keys = new LinkedHashSet<>();
-
-        // TODO
-
+        for(HashMap<K, V> scHashMap : table) {
+            keys.addAll(scHashMap.keySet());
+        }
         return keys;
     }
 
@@ -90,9 +92,9 @@ public class MapHashMap<K, V> implements MapI<K, V> {
     @Override
     public List<V> values() {
         List<V> values = new ArrayList<>();
-
-        // TODO
-
+        for(HashMap<K, V> scHashMap : table) {
+            values.addAll(scHashMap.values());
+        }
         return values;
     }
 
@@ -102,9 +104,9 @@ public class MapHashMap<K, V> implements MapI<K, V> {
     @Override
     public int size() {
         int size = 0;
-
-        // TODO
-
+        for(int i = 0; i < table.length; i++){
+            size += table[i].size();
+        }
         return size;
     }
 

@@ -30,8 +30,9 @@ public class SortedDoubleLinkedList {
         while(!placed && node.next != trailer){
             if(node.next.data.compareTo(element) >= 0){ // place in front of greater or strings equal to element
                 Node newNode = new Node(element);
-                newNode.next = node.next.next;
+                newNode.next = node.next;
                 newNode.prev = node;
+                node.next.prev = newNode;
                 node.next = newNode;
                 placed = true;
             }

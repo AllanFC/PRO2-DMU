@@ -6,9 +6,10 @@ public class main {
         SortedDoubleLinkedList list = new SortedDoubleLinkedList();
         list.printElements();
         System.out.println(list.count());
-        list.add("Benny");
+
         list.add("Charlie");
         list.add("Allan");
+        list.add("Benny");
         list.add("Dan");
 
         list.printElements();
