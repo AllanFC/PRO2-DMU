@@ -6,6 +6,8 @@
       <sourceFolder url="file://$MODULE_DIR$/L25-Hashing/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/L26-Map/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/L28-Binary_Search_Trees/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/proeve_eksamen/src" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
